@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texla P-blog | Thoughts & Tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 4K READY VARIABLES --- */
+        :root {
+            --bg-color: #0b0f19;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent-glow: #6366f1;
+            --card-bg: rgba(31, 41, 55, 0.4);
+            --card-border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            /* Subtle background glow for 4K feel */
+            background-image: radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.15), transparent 25%),
+                              radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.15), transparent 25%);
+            background-attachment: fixed;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(11, 15, 25, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--card-border);
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            background: linear-gradient(to right, #818cf8, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            text-align: center;
+            padding: 120px 20px 80px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* --- BLOG GRID --- */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5% 80px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        /* --- BLOG CARDS (Glassmorphism) --- */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(99, 102, 241, 0.2);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        /* Placeholder image gradients */
+        .card-img {
+            height: 200px;
+            width: 100%;
+        }
+        .img-1 { background: linear-gradient(135deg, #1e1b4b, #4c1d95); }
+        .img-2 { background: linear-gradient(135deg, #064e3b, #065f46); }
+        .img-3 { background: linear-gradient(135deg, #7f1d1d, #991b1b); }
+
+        .card-content {
+            padding: 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #818cf8;
+            margin-bottom: 12px;
+            letter-spacing: 0.05em;
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .read-more {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s ease;
+        }
+
+        .read-more:hover {
+            gap: 12px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--card-border);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Texla P-blog</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Articles</a>
+            <a href="#">About</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Exploring Tech, Security, & The Web.</h1>
+        <p>A practice blog documenting my journey, coding experiments, and deep dives into modern web development.</p>
+    </header>
+
+    <main class="container">
+        <div class="grid">
+            
+            <!-- Card 1 -->
+            <article class="card">
+                <div class="card-img img-1"></div>
+                <div class="card-content">
+                    <span class="tag">Web Design</span>
+                    <h2>The Art of Glassmorphism in CSS</h2>
+                    <p>How to use backdrop-filter and subtle gradients to create stunning, 4K-ready user interfaces that feel modern and sleek.</p>
+                    <a href="#" class="read-more">Read Article &rarr;</a>
+                </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="card">
+                <div class="card-img img-2"></div>
+                <div class="card-content">
+                    <span class="tag">Cybersecurity</span>
+                    <h2>Why Learning to Code Makes You a Better Hacker</h2>
+                    <p>Understanding the architecture of an application is the first step to breaking it. Here is why Python is a hacker's best friend.</p>
+                    <a href="#" class="read-more">Read Article &rarr;</a>
+                </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="card">
+                <div class="card-img img-3"></div>
+                <div class="card-content">
+                    <span class="tag">Projects</span>
+                    <h2>Building a Static Site on GitHub Pages</h2>
+                    <p>A step-by-step guide on how I deployed this very blog for free using Termux, Git, and GitHub Pages.</p>
+                    <a href="#" class="read-more">Read Article &rarr;</a>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 Texla P-blog. Built with pure HTML & CSS.
+    </footer>
+
+</body>
+</html>
